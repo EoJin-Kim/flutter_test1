@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test1/widgets/button.dart';
+import 'package:flutter_test1/widgets/currency_card.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Color(0xff181818),
-          body: Padding(
+          body: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 120,
+                  height: 70,
                 ),
                 Text(
                   'Total Balance',
@@ -97,66 +98,31 @@ class MyApp extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-
                   ],
                 ),
-                Container(
-                  clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                        color: Color(0xff1f2123),
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Euro",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-
-                                children: [
-                                  Text("6 428",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text("EUR",
-                                    style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 20,
-                                  ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Transform.scale(
-                            scale: 2.2,
-                            child: Transform.translate(
-                              offset: Offset(-5, 12),
-                              child: Icon(Icons.euro_symbol_rounded,
-                                color: Colors.white,
-                                size: 88,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                CurrencyCard(
+                  name: "Euro",
+                  code: "EUR",
+                  amount: "6 428",
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
+                  order: 1,
+                ),
+                CurrencyCard(
+                  name: "Bitcoin",
+                  code: "BTC",
+                  amount: "6 428",
+                  icon: Icons.currency_bitcoin,
+                  isInverted: true,
+                  order: 2,
+                ),
+                CurrencyCard(
+                  name: "Dollar",
+                  code: "USD",
+                  amount: "428",
+                  icon: Icons.attach_money_outlined,
+                  isInverted: false,
+                  order: 3,
                 ),
               ],
             ),
